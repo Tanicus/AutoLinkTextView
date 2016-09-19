@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.2'
+    }
+}
+
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository url: "file://${projectDir}/repository"
+            pom.groupId = 'sheltt913'
+            pom.artifactId = 'autolink-textView'
+            pom.version = '0.0.1'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 21
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:21.0.2'
+}
